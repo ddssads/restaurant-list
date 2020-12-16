@@ -1,0 +1,48 @@
+<form action="/restaurants/{{restaurant._id}}/edit" method="POST">
+  <div class="input-group mb-3">
+    <span class="input-group-text">name</span>
+    <input type="text" class="form-control" placeholder="name" aria-label="name" name="name"
+      value="{{restaurant.name}}">
+  </div>
+  <div class="input-group mb-3">
+    <span class="input-group-text">name_en</span>
+    <input type="text" class="form-control" placeholder="name_en" aria-label="name_en" name="name_en"
+      value="{{restaurant.name_en}}">
+  </div>
+  <div class="input-group mb-3">
+    <span class="input-group-text">category</span>
+    <input type="text" class="form-control" placeholder="category" aria-label="category" name="category"
+      value="{{restaurant.category}}">
+  </div>
+  <div class="input-group mb-3">
+    <span class="input-group-text">image</span>
+    <input type="text" class="form-control" placeholder="image" aria-label="image" name="image"
+      value="{{restaurant.image}}">
+  </div>
+  <div class="input-group mb-3">
+    <span class="input-group-text">location</span>
+    <input type="text" class="form-control" placeholder="location" aria-label="location" name="location"
+      value="{{restaurant.location}}">
+  </div>
+  <div class="input-group mb-3">
+    <span class="input-group-text">phone</span>
+    <input type="text" class="form-control" placeholder="phone" aria-label="phone" name="phone"
+      value="{{restaurant.phone}}">
+  </div>
+  <div class="input-group mb-3">
+    <span class="input-group-text">google_map</span>
+    <input type="text" class="form-control" placeholder="google_map" aria-label="google_map" name="google_map"
+      value="{{restaurant.google_map}}">
+  </div>
+  <div class="input-group mb-3">
+    <span class="input-group-text">rating</span>
+    <input type="text" class="form-control" placeholder="rating" aria-label="rating" name="rating"
+      value="{{restaurant.rating}}">
+  </div>
+  <div class="input-group mb-3">
+    <span class="input-group-text">description</span>
+    <input type="text" class="form-control" placeholder="description" aria-label="description" name="description"
+      value="{{restaurant.description}}">
+  </div>
+  <button type="submit">Edit</button>
+</form>
