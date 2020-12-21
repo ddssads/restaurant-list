@@ -96,6 +96,35 @@ app.get('/search', (req, res) => {
     .catch(error => console.log(error))
 })
 
+//Sort
+app.get('/:type/:method', (req, res) => {
+  console.log(req.params.type)
+  const method = req.params.method
+  let selected = {}
+  let showSelected = ''
+  if (req.params.type === 'name') {
+    selected.name = method
+    showSelected = '按名稱排序'
+  }
+  if (req.params.type === 'category') {
+    selected.category = method
+    showSelected = '按分類排序'
+  }
+  if (req.params.type === 'rating') {
+    selected.rating = method
+    method === 'asc' ? showSelected = '按評分排序↑' : showSelected = '按評分排序↓'
+  }
+  console.log(selected)
+  Restaurant.find()
+    .lean()
+    .sort(selected)
+    .then(restaurants => res.render('index', { restaurants, showSelected }))
+    .catch(error => console.log(error))
+
+})
+
+
+
 //Start and listen server
 app.listen(port, (req, res) => {
   console.log('Server is running on http://localhost:3000')
