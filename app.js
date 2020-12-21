@@ -6,6 +6,7 @@ const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 const methodOverride = require('method-override')
 const restaurant = require('./models/restaurant')
+const checkSort = require('./checksort')
 const app = express()
 const port = 3000
 
@@ -101,28 +102,15 @@ app.get('/search', (req, res) => {
 //Sort
 app.get('/:type/:method', (req, res) => {
   console.log(req.params.type)
+  const type = req.params.type
   const method = req.params.method
-  let selected = {}
-  let showSelected = ''
-  if (req.params.type === 'name') {
-    selected.name = method
-    showSelected = '按名稱排序'
-  }
-  if (req.params.type === 'category') {
-    selected.category = method
-    showSelected = '按分類排序'
-  }
-  if (req.params.type === 'rating') {
-    selected.rating = method
-    method === 'asc' ? showSelected = '按評分排序↑' : showSelected = '按評分排序↓'
-  }
-  console.log(selected)
+  const selected = checkSort(type, method)[0]
+  const showSelected = checkSort(type, method)[1]
   Restaurant.find()
     .lean()
     .sort(selected)
     .then(restaurants => res.render('index', { restaurants, showSelected }))
     .catch(error => console.log(error))
-
 })
 
 
