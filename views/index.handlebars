@@ -23,10 +23,10 @@
       排序方法：{{#if showSelected}} {{showSelected}} {{/if}}
     </button>
     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-      <a class="dropdown-item" href="/name/asc">按名稱排序</a>
-      <a class="dropdown-item" href="/category/asc">按分類排序</a>
-      <a class="dropdown-item" href="/rating/asc">按評分排序↑</a>
-      <a class="dropdown-item" href="/rating/desc">按評分排序↓</a>
+      <a class="dropdown-item" href="/sort/name/asc">按名稱排序</a>
+      <a class="dropdown-item" href="/sort/category/asc">按分類排序</a>
+      <a class="dropdown-item" href="/sort/rating/asc">按評分排序↑</a>
+      <a class="dropdown-item" href="/sort/rating/desc">按評分排序↓</a>
     </div>
   </div>
   <div class="row">
@@ -48,7 +48,7 @@
               <a href="/restaurants/{{this._id}}"><i class="fas fa-info-circle"></i></a>
               <a href="/restaurants/{{this._id}}/edit"><i class="fas fa-edit"></i></a>
               <button type="button" class="btn btn-outline-secondary btn-sm" data-toggle="modal"
-                data-target="#exampleModal{{this._id}}">
+                data-target="#deleteModal{{this._id}}">
                 <i class="fas fa-trash-alt"></i>
               </button>
             </div>
@@ -56,20 +56,21 @@
         </a>
 
         <!-- Modal -->
-        <div class="modal fade" id="exampleModal{{this._id}}" tabindex="-1" role="dialog"
+        <div class="modal fade" id="deleteModal{{this._id}}" tabindex="-1" role="dialog"
           aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <h5 class="modal-title" id="exampleModalLabel">警告</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
               <div class="modal-body">
-                ...
+                確定要刪除{{this.name}}嗎？刪除後就不可復原！
               </div>
               <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
                 <form action="/restaurants/{{this._id}}?_method=DELETE" method="POST" style="display: inline;">
                   <button type="submit">確定刪除</button>
                 </form>

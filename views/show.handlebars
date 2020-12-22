@@ -51,15 +51,16 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalLabel">警告</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        ...
+        確定要刪除{{restaurant.name}}嗎？刪除後就不可復原！
       </div>
       <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
         <form action="/restaurants/{{restaurant._id}}?_method=DELETE" method="POST" style="display: inline;">
           <button type="submit">確定刪除</button>
         </form>
