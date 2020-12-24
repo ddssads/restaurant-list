@@ -13,7 +13,7 @@ function checkSort(type, method) {
     selected.rating = method
     method === 'asc' ? showSelected = '按評分排序↑' : showSelected = '按評分排序↓'
   }
-  return [selected, showSelected]
+  return { selected, showSelected }
 }
 
 module.exports = checkSort

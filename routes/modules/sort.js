@@ -7,8 +7,7 @@ const Restaurant = require('../../models/restaurant')
 router.get('/:type/:method', (req, res) => {
   const type = req.params.type
   const method = req.params.method
-  const selected = checkSort(type, method)[0]
-  const showSelected = checkSort(type, method)[1]
+  const { selected, showSelected } = checkSort(type, method)
   Restaurant.find()
     .lean()
     .sort(selected)

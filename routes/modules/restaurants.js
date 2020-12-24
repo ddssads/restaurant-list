@@ -8,6 +8,9 @@ router.get('/create', (req, res) => {
 })
 
 router.post('/', (req, res) => {
+  if (!req.body.image) {
+    req.body.image = 'https://assets-lighthouse.s3.amazonaws.com/uploads/image/file/6227/restaurant-list-logo.png'
+  }
   return Restaurant.create(req.body)
     .then(() => res.redirect('/'))
     .catch(error => console.log(error))
