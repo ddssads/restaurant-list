@@ -17,6 +17,12 @@
 - express: 4.7.1
 - express-handlebars: 5.2.0
 - mongoose: 5.11.8
+- connect-flash：0.1.1
+- express-session: 1.17.1
+- method-override: 3.0.0
+- passport: 0.4.1
+- passport-facebook": 3.0.0
+- passport-local": 1.0.0
 
 ## 安裝流程
 
