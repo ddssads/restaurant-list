@@ -33,9 +33,20 @@ router.get('/:id', (req, res) => {
 router.get('/:id/edit', (req, res) => {
   const userId = req.user._id
   const _id = req.params.id
+  const categorys = [
+    { name: '美式' },
+    { name: '中東料理' },
+    { name: '日本料理' },
+    { name: '義式餐廳' },
+    { name: '酒吧' },
+    { name: ' 咖啡' }
+  ]
   return Restaurant.findOne({ _id, userId })
     .lean()
-    .then((restaurant) => res.render('edit', { restaurant }))
+    .then((restaurant) => {
+      showCategory = categorys.filter(category => category.name !== restaurant.category)
+      res.render('edit', { restaurant, showCategory })
+    })
     .catch(error => console.log(error))
 })
 
